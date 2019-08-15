@@ -19,7 +19,7 @@ mkdir $SETUP_DIR
 
 echo '(3) Downloading Google Chrome...'
 # download the latest stable Google Chrome in
-wget -P $SETUP_DIR/https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+wget -P $SETUP_DIR https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 
 # install Google Chrome
 echo '(4) Installing Google Chrome'
@@ -63,7 +63,7 @@ echo '(14) Android Studio installed!'
 
 # install Tweaks tool
 echo '(15) Installing Tweaks...'
-sudo apt install gnome-tweak-tool
+sudo apt install gnome-tweak-tool -y
 echo '(16) Tweaks installed!'
 
 # install Docker

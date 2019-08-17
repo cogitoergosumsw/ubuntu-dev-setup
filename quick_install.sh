@@ -22,52 +22,60 @@ echo '(3) Downloading Google Chrome...'
 wget -P $SETUP_DIR https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 
 # install Google Chrome
-echo '(4) Installing Google Chrome'
+echo 'Installing Google Chrome'
 sudo dpkg -i $SETUP_DIR/google-chrome-stable_current_amd64.deb
-echo '(5) Google Chrome Installed!'
+echo 'Google Chrome Installed!'
 
 # install VSCode
-echo '(6) Installing VSCode...'
+echo 'Installing VSCode...'
 sudo snap install --classic code
-echo '(7) VSCode Installed!'
+echo 'VSCode Installed!'
+
+#install Spotify
+echo 'Installing Spotify...'
+sudo snap install --classic spotify
+echo 'Spotify Installed!'
 
 # install Chinese Language support
-echo '(8) Installing Chinese Language keyboard...'
+echo 'Installing Chinese Language keyboard...'
 SCHEMA="org.gnome.desktop.input-sources"
 KEY="sources"
 sudo apt-get -y install ibus-libpinyin
 gsettings set $SCHEMA $KEY "$(gsettings get $SCHEMA $KEY | sed "s/]/, ('ibus', 'libpinyin')]/")"
-echo '(9) Chinese Language keyboard set up!'
+echo 'Chinese Language keyboard set up!'
 
 # install Telegram Desktop
-echo '(9) Installing Telegram Desktop...'
+echo 'Installing Telegram Desktop...'
 sudo snap install telegram-desktop
-echo '(10) Telegram Desktop installed!'
+echo 'Telegram Desktop installed!'
 
 # install Grub Customizer
 # (to configure the Grub boot menu easily)
-echo '(11) Installing Grub Customizer...'
+echo 'Installing Grub Customizer...'
 sudo add-apt-repository ppa:danielrichter2007/grub-customizer
 sudo apt-get update
 sudo apt-get -y install grub-customizer
-echo '(12) Grub Customizer Installed!'
+echo 'Grub Customizer Installed!'
 
 # install Android Studio
-echo '(13) Installing Android Studio...'
+echo 'Installing Android Studio...'
 sudo snap install --classic android-studio
 sudo apt-get -y install android-tools-adb android-tools-fastboot
 sudo apt install -y qemu-kvm
 sudo adduser $USER kvm
 sudo chown $USER /dev/kvm
-echo '(14) Android Studio installed!'
+echo 'Android Studio installed!'
 
 # install Tweaks tool
-echo '(15) Installing Tweaks...'
-sudo apt install gnome-tweak-tool -y
-echo '(16) Tweaks installed!'
+echo 'Installing Tweaks...'
+sudo apt install gnome-tweak-tool libqt5svg5 qml-module-qtquick-controls -y
+OCS_URL_LINK = https://www.pling.com/p/1136805/startdownload?file_id=1530774600&file_name=ocs-url_3.1.0-0ubuntu1_amd64.deb&file_type=application/x-debian-package&file_size=54502
+wget -P $SETUP_DIR $OCS_URL_LINK
+sudo dpkg -i $SETUP_DIR/$OCS_URL_LINK
+echo 'Tweaks installed!'
 
 # install Docker
-echo '(16) Installing Docker...'
+echo 'Installing Docker...'
 sudo apt-get -y install \
     apt-transport-https \
     ca-certificates \
@@ -81,23 +89,23 @@ sudo add-apt-repository \
    stable"
 sudo apt-get update
 sudo apt-get install -y docker-ce docker-ce-cli containerd.io docker-compose
-echo '(17) Docker installed!'
+echo 'Docker installed!'
 sudo usermod -aG docker $USER
-echo "(18) $USER added to Docker group!"
+echo "$USER added to Docker group!"
 
 # install nvm
-echo '(19) Installing nvm...'
+echo 'Installing nvm...'
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash
 exec bash
 nvm install node
-echo '(20) npm installed!'
+echo 'npm installed!'
 
 # install yarn
-echo '(21) Installing yarn...'
+echo 'Installing yarn...'
 curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
 echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
 sudo apt-get update && sudo apt-get install --no-install-recommends yarn
-echo '(22) yarn installed!'
+echo 'yarn installed!'
 
 # upgrade existing packages
 sudo apt upgrade
@@ -112,3 +120,4 @@ PLEASE REBOOT TO ENSURE THE CHANGES TAKE EFFECT
 '
 
 exit 0
+

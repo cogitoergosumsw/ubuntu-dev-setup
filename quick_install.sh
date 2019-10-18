@@ -31,6 +31,11 @@ echo 'Installing VSCode...'
 sudo snap install --classic code
 echo 'VSCode Installed!'
 
+# install WebStorm
+echo 'Installing WebStorm...'
+sudo snap install webstorm --classic
+echo 'WebStorm Installed!'
+
 #install Spotify
 echo 'Installing Spotify...'
 sudo snap install --classic spotify
@@ -120,4 +125,5 @@ PLEASE REBOOT TO ENSURE THE CHANGES TAKE EFFECT
 '
 
 exit 0
+
 

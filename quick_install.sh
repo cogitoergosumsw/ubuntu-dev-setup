@@ -108,19 +108,19 @@ echo 'Docker installed!'
 sudo usermod -aG docker $USER
 echo "$USER added to Docker group!"
 
-# install nvm
-echo 'Installing nvm...'
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash
-exec bash
-nvm install node
-echo 'npm installed!'
-
 # install yarn
 echo 'Installing yarn...'
 curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
 echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
 sudo apt-get update && sudo apt-get install --no-install-recommends yarn
 echo 'yarn installed!'
+
+# install nvm
+echo 'Installing nvm...'
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.0/install.sh | bash
+exec bash -l
+nvm install node
+echo 'npm installed!'
 
 # upgrade existing packages
 sudo apt upgrade

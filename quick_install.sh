@@ -14,6 +14,11 @@ sudo apt update
 echo '(2) Installing wget and curl...'
 sudo apt install -y wget curl
 
+# Enable exFAT volumes to be read
+echo 'Setting up for exFAT drives to be read...'
+sudo apt install exfat-fuse exfat-utils -y
+echo 'exFAT drives enabled on this machine'
+
 # make a folder to store all the installation deb files
 mkdir $SETUP_DIR
 
@@ -53,6 +58,11 @@ echo 'Chinese Language keyboard set up!'
 echo 'Installing Telegram Desktop...'
 sudo snap install telegram-desktop
 echo 'Telegram Desktop installed!'
+
+# install tig (for showing detail view of git commits)
+echo 'Install tig...'
+sudo apt install tig -y
+echo 'tig installed!'
 
 # install Grub Customizer
 # (to configure the Grub boot menu easily)
